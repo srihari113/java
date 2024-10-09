@@ -1,0 +1,35 @@
+import java.util.HashMap;
+import java.util.Scanner;
+
+public class LanguageTranslator {
+
+    private static HashMap<String, String> englishToFrench = new HashMap<>();
+
+    public static void main(String[] args) {
+        initializeDictionary();
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Enter an English word to translate to French:");
+        String englishWord = scanner.nextLine().toLowerCase();
+
+        String frenchWord = translateToFrench(englishWord);
+        if (frenchWord != null) {
+            System.out.println("The French translation of '" + englishWord + "' is: " + frenchWord);
+        } else {
+            System.out.println("Translation not found for: " + englishWord);
+        }
+
+        scanner.close();
+    }
+
+    private static void initializeDictionary() {
+        englishToFrench.put("hello", "bonjour");
+        englishToFrench.put("world", "monde");
+        englishToFrench.put("goodbye", "au revoir");
+        englishToFrench.put("thank you", "merci");
+    }
+
+    private static String translateToFrench(String englishWord) {
+        return englishToFrench.get(englishWord);
+    }
+}
